@@ -8,6 +8,7 @@ from stashapi.tools import human_bytes, human_bits
 #	scene_id: the id of the keep scene
 #	flag: Keep/Remove/Unknown flag
 SCENE_TITLE_TEMPLATE = "$group_size|$scene_id$flag"
+FORMAT_TITLES = False
 
 # Path priority is from highest to lowest and works off the root of the path
 PATH_PRIORITY = ['/root/most/important/path','/root/least/important/path']

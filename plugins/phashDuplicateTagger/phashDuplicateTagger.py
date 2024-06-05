@@ -69,6 +69,9 @@ def hooks_main():
 	# need pre hook to work, need to preemptively grab title and work backwards to auto clean remaining scenes
 
 def format_title(group_size, scene_id, flag, title):
+	if not FORMAT_TITLES:
+		return title
+
 	user_template = TITLE_TEMPLATE.substitute({
 		"group_size":group_size,
 		"scene_id":scene_id,
@@ -301,6 +304,11 @@ def split_out_oshash_matches():
 if __name__ == "__main__":
 	if FRAGMENT["args"].get("hookContext"):
 		hooks_main()
+
+	try:
+		FORMAT_TITLES = config.FORMAT_TITLES
+	except AttributeError:
+		FORMAT_TITLES = False
 
 	try:
 		TITLE_TEMPLATE = Template(config.SCENE_TITLE_TEMPLATE)
